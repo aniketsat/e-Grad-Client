@@ -31,7 +31,7 @@ const Login = () => {
     const loginUser = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8081/api/users/login",
+          "https://egrad-server.onrender.com/api/users/login",
           {
             sic,
             password,
@@ -46,7 +46,7 @@ const Login = () => {
 
           // Fetch the profile and resume
           const profileResponse = await axios.get(
-            "http://localhost:8081/api/users/profile",
+            "https://egrad-server.onrender.com/api/users/profile",
             {
               headers: {
                 Authorization: `Bearer ${response.data.token}`,
@@ -57,7 +57,7 @@ const Login = () => {
           saveProfile(profileResponse.data.profile);
 
           const resumeResponse = await axios.get(
-            "http://localhost:8081/api/users/resume",
+            "https://egrad-server.onrender.com/api/users/resume",
             {
               headers: {
                 Authorization: `Bearer ${response.data.token}`,

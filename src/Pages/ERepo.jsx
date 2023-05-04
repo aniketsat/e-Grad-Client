@@ -38,20 +38,26 @@ const ERepo = () => {
 
   useEffect(() => {
     const fetchFolders = async () => {
-      const res = await axios.get("http://localhost:8081/api/folders", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.get(
+        "https://egrad-server.onrender.com/api/folders",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       console.log(res.data);
       setFolders(res.data.data);
     };
     const fetchFiles = async () => {
-      const res = await axios.get("http://localhost:8081/api/files", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.get(
+        "https://egrad-server.onrender.com/api/files",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       console.log(res.data);
       setFiles(res.data.data);
     };
@@ -64,7 +70,7 @@ const ERepo = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8081/api/folders",
+        "https://egrad-server.onrender.com/api/folders",
         {
           name: folderName,
           path: path,
@@ -97,7 +103,7 @@ const ERepo = () => {
       checkedFolders.forEach(async (folderId) => {
         try {
           const res = await axios.delete(
-            `http://localhost:8081/api/folders/${folderId}`,
+            `https://egrad-server.onrender.com/api/folders/${folderId}`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -119,7 +125,7 @@ const ERepo = () => {
       checkedFiles.forEach(async (fileId) => {
         try {
           const res = await axios.delete(
-            `http://localhost:8081/api/files/${fileId}`,
+            `https://egrad-server.onrender.com/api/files/${fileId}`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -169,7 +175,7 @@ const ERepo = () => {
 
       try {
         const res = await axios.post(
-          "http://localhost:8081/api/files",
+          "https://egrad-server.onrender.com/api/files",
           formData,
           {
             headers: {

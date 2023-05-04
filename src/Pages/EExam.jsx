@@ -24,7 +24,7 @@ const EExam = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const res = await axios.get("http://localhost:8081/api/questions", {
+        const res = await axios.get("https://egrad-server.onrender.com/api/questions", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

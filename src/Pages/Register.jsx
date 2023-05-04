@@ -94,7 +94,7 @@ const Register = () => {
     const registerUser = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:8081/api/users/register",
+          "https://egrad-server.onrender.com/api/users/register",
           {
             name,
             email,
@@ -116,7 +116,7 @@ const Register = () => {
           profileFormData.append("user", res.data._id);
           // save the profile and resume in the database
           const profileRes = await axios.post(
-            "http://localhost:8081/api/users/profile",
+            "https://egrad-server.onrender.com/api/users/profile",
             profileFormData
           );
 
@@ -127,7 +127,7 @@ const Register = () => {
             resumeFormData.append("resume", resume);
             resumeFormData.append("user", res.data._id);
             const resumeRes = await axios.post(
-              "http://localhost:8081/api/users/resume",
+              "https://egrad-server.onrender.com/api/users/resume",
               resumeFormData
             );
 

@@ -29,17 +29,20 @@ const OpenForum = () => {
   useEffect(() => {
     const fetchPostsAndReplies = async () => {
       try {
-        let res = await axios.get("http://localhost:8081/api/posts", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        let res = await axios.get(
+          "https://egrad-server.onrender.com/api/posts",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
 
         console.log(res.data);
         setPosts(res.data.data);
 
-        res = await axios.get("http://localhost:8081/api/replies", {
+        res = await axios.get("https://egrad-server.onrender.com/api/replies", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -71,7 +74,7 @@ const OpenForum = () => {
     }
 
     const res = await axios.post(
-      "http://localhost:8081/api/posts",
+      "https://egrad-server.onrender.com/api/posts",
       {
         title,
         description,
@@ -94,12 +97,15 @@ const OpenForum = () => {
 
   const deletePost = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:8081/api/posts/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.delete(
+        `https://egrad-server.onrender.com/api/posts/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       console.log(res.data);
       setPosts(posts.filter((post) => post._id !== id));
@@ -120,7 +126,7 @@ const OpenForum = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8081/api/replies",
+        "https://egrad-server.onrender.com/api/replies",
         {
           reply,
           user: user._id,
@@ -152,7 +158,7 @@ const OpenForum = () => {
   const deleteReply = async (replyId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8081/api/replies/${replyId}`,
+        `https://egrad-server.onrender.com/api/replies/${replyId}`,
         {
           headers: {
             "Content-Type": "application/json",
